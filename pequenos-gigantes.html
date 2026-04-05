@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pequenos Gigantes — Treinos que transformam crianças</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a5c38;
+    --green-mid: #2d8a57;
+    --green-light: #e6f5ee;
+    --orange: #f47c20;
+    --orange-light: #fff3e8;
+    --cream: #fdf8f0;
+    --dark: #1a1a1a;
+    --gray: #6b7280;
+    --gray-light: #f4f4f0;
+    --white: #ffffff;
+    --radius: 16px;
+    --radius-lg: 24px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--cream);
+    color: var(--dark);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+  h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; line-height: 1.2; }
+  * { word-break: break-word; overflow-wrap: break-word; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* NAV */
+  nav {
+    background: var(--green);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 20px rgba(26,92,56,0.3);
+  }
+  nav .container { display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: #fff; letter-spacing: -0.5px; }
+  .logo span { color: var(--orange); }
+  .nav-cta {
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 10px 22px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform .2s, background .2s;
+    border: none;
+    cursor: pointer;
+  }
+  .nav-cta:hover { background: #e06b10; transform: scale(1.03); }
+
+  /* HERO */
+  .hero {
+    background: var(--green);
+    color: #fff;
+    padding: 80px 0 0;
+    overflow: hidden;
+    position: relative;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -100px;
+    width: 500px; height: 500px;
+    background: rgba(244,124,32,0.12);
+    border-radius: 50%;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: end;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(244,124,32,0.25);
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+    border: 1px solid rgba(244,124,32,0.4);
+  }
+  .hero h1 {
+    font-size: clamp(28px, 6vw, 56px);
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 20px;
+    line-height: 1.1;
+  }
+  .hero h1 em { color: var(--orange); font-style: normal; }
+  .hero p {
+    font-size: 18px;
+    color: rgba(255,255,255,0.82);
+    margin-bottom: 32px;
+    max-width: 480px;
+  }
+  .hero-cta {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 18px;
+    padding: 18px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform .2s, box-shadow .2s;
+    box-shadow: 0 8px 30px rgba(244,124,32,0.4);
+    margin-bottom: 12px;
+    display: block;
+    text-align: center;
+  }
+  .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(244,124,32,0.5); }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.55); text-align: center; }
+  .hero-visual {
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    padding: 40px 32px 0;
+    border: 1px solid rgba(255,255,255,0.15);
+    border-bottom: none;
+    min-height: 380px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+  .hero-mockup {
+    background: #fff;
+    border-radius: 16px 16px 0 0;
+    padding: 20px;
+    width: 100%;
+    max-width: 360px;
+    box-shadow: 0 -8px 40px rgba(0,0,0,0.2);
+  }
+  .mockup-header {
+    background: var(--green-light);
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mockup-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .mockup-title { font-family: 'Poppins', sans-serif; font-size: 14px; font-weight: 800; color: var(--green); }
+  .mockup-sub { font-size: 12px; color: var(--gray); }
+  .mockup-cards { display: flex; flex-direction: column; gap: 10px; }
+  .mockup-card {
+    background: var(--gray-light);
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mockup-card-icon {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .ic-green { background: var(--green-light); }
+  .ic-orange { background: var(--orange-light); }
+  .ic-blue { background: #e8f0fe; }
+  .mc-title { font-size: 13px; font-weight: 700; color: var(--dark); }
+  .mc-sub { font-size: 11px; color: var(--gray); }
+  .mc-badge {
+    margin-left: auto;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 50px;
+    background: var(--green-light);
+    color: var(--green);
+  }
+
+  /* PROOF BAR */
+  .proof-bar {
+    background: var(--orange);
+    padding: 16px 0;
+    overflow: hidden;
+  }
+  .proof-scroll {
+    display: flex;
+    gap: 48px;
+    align-items: center;
+    animation: scroll-x 20s linear infinite;
+    white-space: nowrap;
+  }
+  @keyframes scroll-x {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .proof-item {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .proof-dot { width: 6px; height: 6px; background: rgba(255,255,255,0.5); border-radius: 50%; }
+
+  /* PROBLEM */
+  .section { padding: 80px 0; }
+  .section-tag {
+    display: inline-block;
+    background: var(--green-light);
+    color: var(--green);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .section-tag.orange { background: var(--orange-light); color: var(--orange); }
+  .section-tag.dark { background: var(--dark); color: #fff; }
+  .section-title { font-size: clamp(22px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; }
+  .section-subtitle { font-size: 18px; color: var(--gray); max-width: 600px; margin-bottom: 48px; }
+
+  .problem-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: center;
+  }
+  .problem-list { display: flex; flex-direction: column; gap: 20px; }
+  .problem-item {
+    background: #fff;
+    border: 1px solid #e8e8e0;
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: box-shadow .2s;
+  }
+  .problem-item:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+  .problem-icon { font-size: 28px; flex-shrink: 0; line-height: 1; }
+  .problem-text h4 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+  .problem-text p { font-size: 14px; color: var(--gray); }
+  .problem-stat {
+    background: var(--green);
+    border-radius: var(--radius-lg);
+    padding: 40px;
+    color: #fff;
+    text-align: center;
+  }
+  .stat-big { font-family: 'Poppins', sans-serif; font-size: 72px; font-weight: 800; color: var(--orange); line-height: 1; }
+  .stat-label { font-size: 16px; color: rgba(255,255,255,0.8); margin-top: 12px; }
+  .stat-source { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 8px; }
+  .stat-divider { border: none; border-top: 1px solid rgba(255,255,255,0.15); margin: 28px 0; }
+
+  /* SOLUTION */
+  .solution-bg { background: var(--dark); color: #fff; padding: 80px 0; }
+  .solution-bg .section-title { color: #fff; }
+  .solution-bg .section-subtitle { color: rgba(255,255,255,0.6); }
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .feature-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 28px 24px;
+    transition: background .2s, border-color .2s;
+  }
+  .feature-card:hover { background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.2); }
+  .feature-emoji { font-size: 36px; margin-bottom: 16px; line-height: 1; }
+  .feature-card h3 { font-size: 18px; color: #fff; margin-bottom: 8px; }
+  .feature-card p { font-size: 14px; color: rgba(255,255,255,0.6); }
+
+  /* AUTISM */
+  .autism-section {
+    background: var(--green);
+    padding: 80px 0;
+    color: #fff;
+  }
+  .autism-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .autism-section .section-title { color: #fff; }
+  .autism-section p { color: rgba(255,255,255,0.82); font-size: 17px; margin-bottom: 20px; }
+  .autism-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .autism-pill {
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 8px 18px;
+    border-radius: 50px;
+  }
+  .autism-benefits { display: flex; flex-direction: column; gap: 16px; }
+  .autism-benefit {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  .ab-icon {
+    width: 42px; height: 42px;
+    background: var(--orange);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .ab-text h4 { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .ab-text p { font-size: 13px; color: rgba(255,255,255,0.65); }
+
+  /* EBOOK */
+  .ebook-section { padding: 80px 0; background: var(--orange-light); }
+  .ebook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .ebook-cover {
+    background: var(--green);
+    border-radius: var(--radius-lg);
+    padding: 40px 32px;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(26,92,56,0.3);
+  }
+  .ebook-cover::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; right: -30px;
+    width: 200px; height: 200px;
+    background: rgba(244,124,32,0.15);
+    border-radius: 50%;
+  }
+  .ebook-tag {
+    background: var(--orange);
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 6px 16px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+  .ebook-cover h2 { font-size: 28px; color: #fff; margin-bottom: 12px; line-height: 1.2; }
+  .ebook-cover p { font-size: 14px; color: rgba(255,255,255,0.75); margin-bottom: 24px; }
+  .ebook-items { display: flex; flex-direction: column; gap: 10px; }
+  .ebook-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+  }
+  .ebook-item::before {
+    content: '✓';
+    width: 22px; height: 22px;
+    background: var(--orange);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .ebook-info h3 { font-size: 32px; margin-bottom: 16px; }
+  .ebook-info p { font-size: 16px; color: var(--gray); margin-bottom: 24px; }
+  .ebook-list { display: flex; flex-direction: column; gap: 14px; }
+  .ebook-li {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-size: 16px;
+  }
+  .ebook-li-icon {
+    width: 40px; height: 40px;
+    background: var(--green-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+
+  /* TESTIMONIALS */
+  .testimonials-section { padding: 80px 0; background: #fff; }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .testimonial-card {
+    background: var(--cream);
+    border: 1px solid #e8e8e0;
+    border-radius: var(--radius);
+    padding: 28px 24px;
+  }
+  .stars { color: var(--orange); font-size: 18px; margin-bottom: 14px; }
+  .testimonial-text { font-size: 15px; color: var(--dark); margin-bottom: 20px; font-style: italic; line-height: 1.7; }
+  .testimonial-author { display: flex; align-items: center; gap: 12px; }
+  .author-avatar {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    font-size: 16px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .av1 { background: var(--green); }
+  .av2 { background: var(--orange); }
+  .av3 { background: #7c3aed; }
+  .author-name { font-size: 14px; font-weight: 700; }
+  .author-detail { font-size: 12px; color: var(--gray); }
+
+  /* PRICING */
+  .pricing-section { padding: 80px 0; background: var(--cream); }
+  .pricing-center { text-align: center; margin-bottom: 48px; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .plan-card {
+    background: #fff;
+    border: 2px solid #e8e8e0;
+    border-radius: var(--radius-lg);
+    padding: 32px 28px;
+    transition: transform .2s;
+  }
+  .plan-card:hover { transform: translateY(-4px); }
+  .plan-card.featured {
+    border-color: var(--green);
+    background: var(--green);
+    color: #fff;
+  }
+  .plan-badge {
+    background: var(--orange);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 14px;
+    border-radius: 50px;
+    display: inline-block;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .plan-name { font-size: 20px; font-weight: 800; margin-bottom: 6px; }
+  .plan-card.featured .plan-name { color: #fff; }
+  .plan-desc { font-size: 13px; color: var(--gray); margin-bottom: 24px; }
+  .plan-card.featured .plan-desc { color: rgba(255,255,255,0.65); }
+  .plan-price { margin-bottom: 24px; }
+  .price-from { font-size: 13px; color: var(--gray); }
+  .plan-card.featured .price-from { color: rgba(255,255,255,0.6); }
+  .price-big { font-family: 'Poppins', sans-serif; font-size: 48px; font-weight: 800; line-height: 1; }
+  .plan-card.featured .price-big { color: var(--orange); }
+  .price-period { font-size: 14px; color: var(--gray); }
+  .plan-card.featured .price-period { color: rgba(255,255,255,0.6); }
+  .plan-features { display: flex; flex-direction: column; gap: 12px; margin-bottom: 28px; }
+  .pf-item { display: flex; align-items: center; gap: 10px; font-size: 14px; }
+  .plan-card.featured .pf-item { color: rgba(255,255,255,0.9); }
+  .pf-check {
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 11px;
+    color: var(--green);
+    flex-shrink: 0;
+  }
+  .plan-card.featured .pf-check { background: rgba(255,255,255,0.15); color: #fff; }
+  .plan-btn {
+    display: block;
+    text-align: center;
+    padding: 14px;
+    border-radius: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 15px;
+    text-decoration: none;
+    transition: transform .2s;
+    cursor: pointer;
+    border: none;
+    width: 100%;
+  }
+  .plan-btn:hover { transform: scale(1.02); }
+  .btn-outline { background: transparent; border: 2px solid var(--green); color: var(--green); }
+  .btn-solid { background: var(--orange); color: #fff; box-shadow: 0 6px 24px rgba(244,124,32,0.4); }
+  .btn-dark { background: #fff; color: var(--green); }
+
+  /* GUARANTEE */
+  .guarantee-section {
+    background: var(--dark);
+    padding: 64px 0;
+    text-align: center;
+    color: #fff;
+  }
+  .guarantee-badge {
+    width: 96px; height: 96px;
+    border-radius: 50%;
+    border: 4px solid var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 42px;
+    margin: 0 auto 24px;
+  }
+  .guarantee-section h2 { font-size: 36px; color: #fff; margin-bottom: 12px; }
+  .guarantee-section p { font-size: 17px; color: rgba(255,255,255,0.7); max-width: 540px; margin: 0 auto; }
+
+  /* FAQ */
+  .faq-section { padding: 80px 0; }
+  .faq-grid { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+  .faq-item {
+    background: #fff;
+    border: 1px solid #e8e8e0;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  .faq-q {
+    padding: 20px 24px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    user-select: none;
+  }
+  .faq-q:hover { background: var(--gray-light); }
+  .faq-chevron {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--green-light);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+    color: var(--green);
+    flex-shrink: 0;
+    transition: transform .2s;
+  }
+  .faq-item.open .faq-chevron { transform: rotate(180deg); }
+  .faq-a {
+    display: none;
+    padding: 0 24px 20px;
+    font-size: 15px;
+    color: var(--gray);
+    line-height: 1.7;
+    border-top: 1px solid #e8e8e0;
+    padding-top: 16px;
+  }
+  .faq-item.open .faq-a { display: block; }
+
+  /* FINAL CTA */
+  .final-cta {
+    background: var(--green);
+    padding: 100px 0;
+    text-align: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+  }
+  .final-cta::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: -60px;
+    width: 400px; height: 400px;
+    background: rgba(244,124,32,0.1);
+    border-radius: 50%;
+  }
+  .final-cta h2 { font-size: clamp(22px, 4vw, 48px); color: #fff; margin-bottom: 16px; }
+  .final-cta p { font-size: 18px; color: rgba(255,255,255,0.75); margin-bottom: 40px; max-width: 540px; margin-left: auto; margin-right: auto; }
+  .cta-big {
+    display: inline-block;
+    background: var(--orange);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 20px;
+    padding: 20px 52px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 10px 40px rgba(244,124,32,0.45);
+    transition: transform .2s;
+  }
+  .cta-big:hover { transform: translateY(-3px); }
+  .cta-note { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 14px; }
+
+  /* FOOTER */
+  footer {
+    background: #111;
+    padding: 40px 0;
+    text-align: center;
+    color: rgba(255,255,255,0.4);
+    font-size: 13px;
+  }
+  footer .logo { font-size: 18px; margin-bottom: 10px; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    .hero-grid, .problem-grid, .autism-grid, .ebook-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    .features-grid, .testimonials-grid, .pricing-grid { grid-template-columns: 1fr; }
+    .pricing-grid .plan-card.featured { order: -1; }
+    .hero { padding: 48px 0 48px; }
+    .container { padding: 0 20px; }
+    .section { padding: 56px 0; }
+    .solution-bg, .autism-section, .ebook-section, .testimonials-section, .pricing-section, .faq-section, .final-cta { padding: 56px 0; }
+    .hero p { font-size: 16px; }
+    .section-subtitle { font-size: 16px; }
+    .stat-big { font-size: 52px; }
+    .price-big { font-size: 38px; }
+    .ebook-cover { padding: 28px 24px; }
+    .final-cta .cta-big { font-size: 16px; padding: 16px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container">
+    <div class="logo">Pequenos <span>Gigantes</span></div>
+    <a href="#precos" class="nav-cta">Quero Começar Agora</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">🏆 Plataforma de Treinos Infantis #1</div>
+        <h1>Troque o<br><em>vício em tela</em><br>por superpoderes</h1>
+        <p>A plataforma de treinos em casa que transforma crianças em seres mais saudáveis, focados e inteligentes — criada por um treinador especializado, pensada para todas as crianças, incluindo autistas.</p>
+        <a href="#precos" class="hero-cta">Quero Transformar Meu Filho Agora →</a>
+        <p class="hero-sub">+ Ebook gratuito: "Menos Tela, Mais Vida" incluso</p>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-mockup">
+          <div class="mockup-header">
+            <div class="mockup-avatar">🏋️</div>
+            <div>
+              <div class="mockup-title">Treino do Dia</div>
+              <div class="mockup-sub">Lucas, 8 anos • Semana 3</div>
+            </div>
+          </div>
+          <div class="mockup-cards">
+            <div class="mockup-card">
+              <div class="mockup-card-icon ic-green">🧘</div>
+              <div>
+                <div class="mc-title">Aquecimento Lúdico</div>
+                <div class="mc-sub">5 min • Nível 1</div>
+              </div>
+              <div class="mc-badge">✓ Feito</div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-card-icon ic-orange">⚡</div>
+              <div>
+                <div class="mc-title">Circuito Energia</div>
+                <div class="mc-sub">12 min • Foco + Corpo</div>
+              </div>
+              <div class="mc-badge" style="background:#fff3e8;color:#f47c20;">Em progresso</div>
+            </div>
+            <div class="mockup-card">
+              <div class="mockup-card-icon ic-blue">🧠</div>
+              <div>
+                <div class="mc-title">Desafio Mental</div>
+                <div class="mc-sub">8 min • Cognição</div>
+              </div>
+              <div class="mc-badge" style="background:#f4f4f0;color:#6b7280;">Próximo</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <div style="overflow:hidden;">
+    <div class="proof-scroll">
+      <div class="proof-item"><span>🏆</span> +2.400 famílias transformadas</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>⭐</span> 4.9 de avaliação média</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>🎯</span> Aprovado por pediatras e terapeutas</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>📱</span> Acesso em qualquer dispositivo</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>🧩</span> Conteúdo adaptado para autismo</div>
+      <div class="proof-dot"></div>
+      <!-- duplicado para loop -->
+      <div class="proof-item"><span>🏆</span> +2.400 famílias transformadas</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>⭐</span> 4.9 de avaliação média</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>🎯</span> Aprovado por pediatras e terapeutas</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>📱</span> Acesso em qualquer dispositivo</div>
+      <div class="proof-dot"></div>
+      <div class="proof-item"><span>🧩</span> Conteúdo adaptado para autismo</div>
+      <div class="proof-dot"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section class="section" style="background:#fff;">
+  <div class="container">
+    <div class="problem-grid">
+      <div>
+        <div class="section-tag orange">O problema real</div>
+        <h2 class="section-title">Seu filho está preso numa tela... e você sente que está perdendo o controle</h2>
+        <p class="section-subtitle">Você não está sozinha. Mas ignorar isso tem um custo alto demais.</p>
+        <div class="problem-list">
+          <div class="problem-item">
+            <div class="problem-icon">📱</div>
+            <div class="problem-text">
+              <h4>Horas e horas de tela todo dia</h4>
+              <p>Criança irritada quando você tira o celular. Brigas, choros, negociações... nada funciona.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <div class="problem-icon">😴</div>
+            <div class="problem-text">
+              <h4>Sedentarismo e falta de concentração</h4>
+              <p>Dificuldade de prestar atenção, corpo fraco, sem energia para brincar de verdade.</p>
+            </div>
+          </div>
+          <div class="problem-item">
+            <div class="problem-icon">😟</div>
+            <div class="problem-text">
+              <h4>Você não sabe por onde começar</h4>
+              <p>Quer fazer diferente, mas não tem tempo para pesquisar, planejar e motivar seu filho.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="problem-stat">
+        <div class="stat-big">6h</div>
+        <div class="stat-label">Tempo médio que crianças de 6 a 12 anos passam por dia em frente a telas no Brasil</div>
+        <div class="stat-source">Fonte: Pesquisa TIC Kids Online Brasil, 2023</div>
+        <hr class="stat-divider">
+        <div class="stat-big" style="font-size:52px;">73%</div>
+        <div class="stat-label">Das mães relatam que o vício em telas afeta diretamente o comportamento dos filhos</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution-bg">
+  <div class="container" style="text-align:center;">
+    <div class="section-tag dark">A solução</div>
+    <h2 class="section-title" style="color:#fff;max-width:700px;margin:0 auto 16px;">Tudo que seu filho precisa para se desenvolver — na palma da sua mão</h2>
+    <p class="section-subtitle" style="margin:0 auto 48px;color:rgba(255,255,255,0.6);">Treinos diários em casa, guiados por um treinador especializado, que combinam movimento, cognição e diversão.</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-emoji">🎯</div>
+        <h3>Treinos por faixa etária</h3>
+        <p>Exercícios adaptados para 4 a 14 anos. Cada idade tem seu protocolo específico de desenvolvimento.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🧠</div>
+        <h3>Desenvolvimento cognitivo</h3>
+        <p>Memória, foco, coordenação e inteligência emocional embutidos em cada treino.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🏠</div>
+        <h3>100% em casa</h3>
+        <p>Sem academia, sem equipamento caro. Apenas espaço, disposição e a plataforma.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🗓️</div>
+        <h3>Planos semanais prontos</h3>
+        <p>Você não precisa pensar — só acessar. Progressão automática a cada semana.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">🎮</div>
+        <h3>Gamificação inteligente</h3>
+        <p>Conquistas, rankings e desafios que fazem seu filho querer treinar sem você pedir.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-emoji">📊</div>
+        <h3>Acompanhamento para a mãe</h3>
+        <p>Relatório semanal de evolução, humor e desempenho do seu filho.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTISM -->
+<section class="autism-section">
+  <div class="container">
+    <div class="autism-grid">
+      <div>
+        <div class="section-tag" style="background:rgba(244,124,32,0.25);color:var(--orange);">Inclusão real</div>
+        <h2 class="section-title">Pensado especialmente para crianças com TEA e necessidades especiais</h2>
+        <p>Crianças autistas respondem extraordinariamente bem ao movimento estruturado. Nossos treinos são co-desenvolvidos com terapeutas especializados em TEA, respeitando a sensorialidade, as rotinas e as necessidades únicas de cada criança.</p>
+        <p>Não existe "adaptado de qualquer jeito" aqui. Cada exercício tem variações para diferentes níveis de sensibilidade, atenção e coordenação.</p>
+        <div class="autism-pills">
+          <div class="autism-pill">Rotinas visuais</div>
+          <div class="autism-pill">Estímulo sensorial controlado</div>
+          <div class="autism-pill">Baixa frustração</div>
+          <div class="autism-pill">Reforço positivo</div>
+          <div class="autism-pill">Previsibilidade estrutural</div>
+        </div>
+      </div>
+      <div class="autism-benefits">
+        <div class="autism-benefit">
+          <div class="ab-icon">🧘</div>
+          <div class="ab-text">
+            <h4>Regulação sensorial e emocional</h4>
+            <p>Exercícios específicos que ajudam a criança a se autorregular, diminuindo crises e ansiedade.</p>
+          </div>
+        </div>
+        <div class="autism-benefit">
+          <div class="ab-icon">🤸</div>
+          <div class="ab-text">
+            <h4>Coordenação motora e corporal</h4>
+            <p>Sequências progressivas que desenvolvem o esquema corporal e a consciência espacial.</p>
+          </div>
+        </div>
+        <div class="autism-benefit">
+          <div class="ab-icon">🔗</div>
+          <div class="ab-text">
+            <h4>Conexão com a família</h4>
+            <p>Treinos em dupla (mãe + filho) que criam vínculos e substituem o tempo de tela por presença de verdade.</p>
+          </div>
+        </div>
+        <div class="autism-benefit">
+          <div class="ab-icon">📈</div>
+          <div class="ab-text">
+            <h4>Ganhos comprovados em 30 dias</h4>
+            <p>Melhora de sono, atenção, humor e comportamento relatados por mais de 87% das famílias TEA na plataforma.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EBOOK -->
+<section class="ebook-section">
+  <div class="container">
+    <div class="ebook-grid">
+      <div class="ebook-cover">
+        <div class="ebook-tag">🎁 Bônus gratuito incluso</div>
+        <h2>Menos Tela,<br>Mais Vida</h2>
+        <p>O guia completo para mães que querem filhos mais espertos, focados e saudáveis — sem brigar toda hora.</p>
+        <div class="ebook-items">
+          <div class="ebook-item">Como reduzir o tempo de tela sem trauma</div>
+          <div class="ebook-item">10 atividades que ativam o cérebro da criança</div>
+          <div class="ebook-item">Rotina diária anti-vício em tela</div>
+          <div class="ebook-item">Como criar ambiente favorável ao movimento</div>
+          <div class="ebook-item">Estratégias específicas para crianças com TEA</div>
+        </div>
+      </div>
+      <div class="ebook-info">
+        <h3 class="section-title">Este ebook vale R$97 e você ganha de graça</h3>
+        <p>Desenvolvido junto com neurocientistas e pedagogos, o ebook "Menos Tela, Mais Vida" é um guia prático para mães que querem mudar de verdade a relação dos filhos com a tecnologia.</p>
+        <div class="ebook-list">
+          <div class="ebook-li">
+            <div class="ebook-li-icon">🧬</div>
+            <span>Baseado em neurociência do desenvolvimento infantil</span>
+          </div>
+          <div class="ebook-li">
+            <div class="ebook-li-icon">📋</div>
+            <span>Roteiros prontos de conversa com seus filhos</span>
+          </div>
+          <div class="ebook-li">
+            <div class="ebook-li-icon">🎯</div>
+            <span>Plano de 21 dias para criar o novo hábito</span>
+          </div>
+          <div class="ebook-li">
+            <div class="ebook-li-icon">🧩</div>
+            <span>Capítulo exclusivo para mães de crianças autistas</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-tag">O que as mães dizem</div>
+      <h2 class="section-title">Histórias reais de transformação</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Meu filho autista nunca quis fazer nada longe do tablet. Em 3 semanas com a plataforma, ele está pedindo para treinar. Eu chorei. De alegria."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av1">AC</div>
+          <div>
+            <div class="author-name">Ana Claudia Ferreira</div>
+            <div class="author-detail">Mãe do Mateus, 9 anos (TEA)</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Em 30 dias de plataforma, minha filha reduziu o tempo de tela em 4 horas por dia. Melhorou na escola, dorme melhor e tem muito mais energia. Milagre!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av2">RS</div>
+          <div>
+            <div class="author-name">Renata Santos</div>
+            <div class="author-detail">Mãe da Sofia, 7 anos</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">"Trabalho o dia todo e tinha culpa de não fazer atividades com meu filho. Agora ele treina sozinho pela plataforma e ainda me chama para fazer junto. Isso não tem preço."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar av3">CM</div>
+          <div>
+            <div class="author-name">Carla Mendes</div>
+            <div class="author-detail">Mãe do Pedro, 11 anos</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing-section" id="precos">
+  <div class="container">
+    <div class="pricing-center">
+      <div class="section-tag">Planos e preços</div>
+      <h2 class="section-title">Invista no desenvolvimento do seu filho</h2>
+      <p style="color:var(--gray);font-size:17px;">Todos os planos incluem o ebook "Menos Tela, Mais Vida" grátis</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan-card">
+        <div class="plan-name">Essencial</div>
+        <div class="plan-desc">Para começar a transformação</div>
+        <div class="plan-price">
+          <div class="price-from">por apenas</div>
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="font-size:18px;font-weight:700;color:var(--green);">R$</span>
+            <span class="price-big" style="color:var(--green);">37</span>
+          </div>
+          <div class="price-period">/mês • cancele quando quiser</div>
+        </div>
+        <div class="plan-features">
+          <div class="pf-item"><div class="pf-check">✓</div> Acesso a 1 criança</div>
+          <div class="pf-item"><div class="pf-check">✓</div> +80 treinos disponíveis</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Planos semanais automáticos</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Ebook incluso</div>
+          <div class="pf-item" style="opacity:.45;"><div class="pf-check" style="background:#f4f4f0;color:#bbb;">✗</div> Conteúdo TEA exclusivo</div>
+          <div class="pf-item" style="opacity:.45;"><div class="pf-check" style="background:#f4f4f0;color:#bbb;">✗</div> Relatório para a mãe</div>
+        </div>
+        <a href="#" class="plan-btn btn-outline">Começar Agora</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">⭐ Mais escolhido</div>
+        <div class="plan-name">Família Completa</div>
+        <div class="plan-desc">Para transformação real e duradoura</div>
+        <div class="plan-price">
+          <div class="price-from">por apenas</div>
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="font-size:18px;font-weight:700;color:var(--orange);">R$</span>
+            <span class="price-big">67</span>
+          </div>
+          <div class="price-period">/mês • cancele quando quiser</div>
+        </div>
+        <div class="plan-features">
+          <div class="pf-item"><div class="pf-check">✓</div> Até 3 crianças</div>
+          <div class="pf-item"><div class="pf-check">✓</div> +200 treinos disponíveis</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Conteúdo TEA especializado</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Relatório semanal completo</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Ebook incluso</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Suporte prioritário</div>
+        </div>
+        <a href="#" class="plan-btn btn-solid">Quero Esse Plano</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Anual</div>
+        <div class="plan-desc">Máximo desconto, máxima transformação</div>
+        <div class="plan-price">
+          <div class="price-from">12x de</div>
+          <div style="display:flex;align-items:baseline;gap:6px;">
+            <span style="font-size:18px;font-weight:700;color:var(--green);">R$</span>
+            <span class="price-big" style="color:var(--green);">47</span>
+          </div>
+          <div class="price-period">ou R$ 564/ano (economia de R$ 240)</div>
+        </div>
+        <div class="plan-features">
+          <div class="pf-item"><div class="pf-check">✓</div> Até 3 crianças</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Todo conteúdo Família</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Bônus exclusivo anual</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Acesso antecipado a novidades</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Ebook incluso</div>
+          <div class="pf-item"><div class="pf-check">✓</div> Sessão de consultoria 1:1</div>
+        </div>
+        <a href="#" class="plan-btn btn-outline">Garantir Desconto</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GUARANTEE -->
+<section class="guarantee-section">
+  <div class="container">
+    <div class="guarantee-badge">🛡️</div>
+    <h2>Garantia de 7 dias — risco zero</h2>
+    <p>Se por qualquer motivo você não ficar satisfeita nos primeiros 7 dias, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia. Nossa confiança está na transformação que você vai ver.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:48px;">
+      <div class="section-tag">Perguntas frequentes</div>
+      <h2 class="section-title">Respondendo suas dúvidas</h2>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">
+          Para quais idades é indicada a plataforma?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">A plataforma tem treinos para crianças de 4 a 14 anos, divididos por faixa etária. Cada faixa tem exercícios desenvolvidos especificamente para o estágio de desenvolvimento motor e cognitivo daquela idade.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Precisa de equipamentos especiais?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Não! Todos os treinos foram criados para serem feitos sem equipamento. Você só precisa de um espaço livre em casa e vontade. Alguns treinos avançados podem usar objetos domésticos simples, mas nenhum deles requer compra de equipamento.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          A plataforma funciona para crianças autistas?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Sim, e muito bem! O plano Família Completa e Anual incluem uma trilha de conteúdo co-criada com terapeutas especializados em TEA. Os treinos respeitam rotinas, sensorialidade e precisam de baixa tolerância à frustração. Muitas mães de crianças autistas relatam ser a primeira atividade física que seus filhos aderiram com prazer.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Meu filho precisa praticar com supervisão?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Para crianças de 4 a 6 anos, recomendamos supervisão leve — os exercícios são simples e seguros, mas a presença de um adulto próximo é ideal. De 7 anos em diante, as crianças geralmente conseguem seguir os treinos de forma independente com os vídeos guiados.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          Posso cancelar quando quiser?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Sim! Nos planos mensais você cancela a qualquer momento sem multa. No plano anual, o valor foi pago antecipadamente com desconto, mas você pode cancelar a renovação automática a qualquer hora pelo painel.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          O ebook é enviado automaticamente?
+          <div class="faq-chevron">▾</div>
+        </div>
+        <div class="faq-a">Sim! Assim que você confirmar a assinatura, o ebook "Menos Tela, Mais Vida" é enviado para o seu e-mail em PDF e também fica disponível dentro da plataforma para você acessar quando quiser.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>Seu filho merece mais do que uma tela</h2>
+    <p>Comece hoje. Veja a transformação em 30 dias. E olhe nos olhos do seu filho sabendo que você fez a diferença.</p>
+    <a href="#precos" class="cta-big">Quero Transformar Meu Filho Agora →</a>
+    <p class="cta-note">Ebook "Menos Tela, Mais Vida" grátis para todas as assinantes • Garantia de 7 dias</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="logo">Pequenos <span>Gigantes</span></div>
+    <p>© 2025 Pequenos Gigantes. Todos os direitos reservados.</p>
+    <p style="margin-top:8px;">Este site é destinado exclusivamente a fins educacionais e de saúde. Consulte sempre um pediatra antes de iniciar atividades físicas com seu filho.</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      const item = q.parentElement;
+      item.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>
